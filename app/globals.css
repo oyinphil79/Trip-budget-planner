@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-paper: #faf8f4;
+  --color-ink: #17160f;
+  --color-muted: #77736a;
+  --color-line: #ece8e0;
+  --color-mint: #3f9d6a;
+  --color-peach: #e58a5b;
+}
+
+@utility card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 2px rgb(23 22 15 / 0.04), 0 12px 32px -16px rgb(23 22 15 / 0.12);
+}
+
+@utility pill-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  color: #fff;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 150ms, opacity 150ms;
+  &:hover { background: #34322a; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+@utility pill-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  color: var(--color-ink);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  transition: border-color 150ms;
+  &:hover { border-color: #d6d1c6; }
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  transition: all 150ms;
+  &:hover { color: var(--color-ink); }
+  &[aria-pressed="true"] { border-color: var(--color-ink); color: var(--color-ink); }
+}
+
+@utility dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  flex: none;
+}
+
+@utility field {
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  background: #fff;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  outline: none;
+  &:focus { border-color: #cfc9bc; }
+}
+
+@utility label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@utility glow {
+  background:
+    radial-gradient(38% 70% at 28% 0%, rgb(196 236 204 / 0.75), transparent 70%),
+    radial-gradient(38% 70% at 72% 0%, rgb(253 214 188 / 0.75), transparent 70%);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
