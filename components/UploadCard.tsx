@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { FileText, ImageIcon, Loader2, ScanText, Upload, X } from "lucide-react";
 import { CATEGORIES, type CategoryId } from "@/lib/categories";
+import { Samples } from "./Samples";
 
 export const ACCEPT = ["application/pdf", "image/png", "image/jpeg", "image/webp"];
 export const MAX_BYTES = 8 * 1024 * 1024;
@@ -15,9 +16,10 @@ type Props = {
   busy: boolean;
   error: string | null;
   onRead: () => void;
+  onError: (msg: string) => void;
 };
 
-export function UploadCard({ file, onFile, category, onCategory, busy, error, onRead }: Props) {
+export function UploadCard({ file, onFile, category, onCategory, busy, error, onRead, onError }: Props) {
   const input = useRef<HTMLInputElement>(null);
   const [over, setOver] = useState(false);
   const Icon = file?.type === "application/pdf" ? FileText : ImageIcon;
@@ -56,6 +58,8 @@ export function UploadCard({ file, onFile, category, onCategory, busy, error, on
           }}
         />
       </div>
+
+      <Samples current={file?.name ?? null} onFile={onFile} onError={onError} />
 
       {file && (
         <div className="mt-4 flex items-center gap-3 rounded-xl border border-line px-3 py-2.5 text-sm">

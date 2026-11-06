@@ -11,6 +11,10 @@ npm run dev
 
 Paste your OpenAI key in the field at the top of the page. It is kept in `sessionStorage` (`openai-key`) and sent as the `x-openai-key` header. If you don't paste one, the server uses `OPENAI_API_KEY` (see `.env.example`).
 
+## Sample invoices
+
+Two sample invoices sit in `app/assets`: `invoice-1.png` (Acme Solutions, INR with CGST and SGST) and `invoice-2.png` (CloudFlow, USD with sales tax). The "Try a sample" chips under the upload load one as if you had uploaded it. Both totals add up, so the check shows a match.
+
 ## How it fits together
 
 | File | Job |
@@ -21,6 +25,7 @@ Paste your OpenAI key in the field at the top of the page. It is kept in `sessio
 | `lib/models.ts` | Model table: `gpt-5-mini` (`minimal`) and `gpt-6.1-sol` (`none`) |
 | `lib/check.ts` | Adds line amounts and taxes in integer cents and compares with the printed total |
 | `lib/fx.ts` | INR rate from frankfurter.dev, with a rough fallback table |
+| `lib/samples.ts` | Sample invoice list, loaded through static imports |
 | `components/*` | Header, upload card, receipt card, spending log |
 
 The model is told to copy printed numbers and not to fix the arithmetic. Whether the total adds up is decided only in `lib/check.ts`.

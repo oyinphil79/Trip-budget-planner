@@ -134,6 +134,7 @@ export default function Page() {
               busy={busy}
               error={error}
               onRead={read}
+              onError={setError}
             />
             {result && <ReceiptCard result={result} />}
           </div>
